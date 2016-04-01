@@ -2,6 +2,7 @@ import {Component, OnInit} from 'angular2/core';
 import {ShoppingListNewItemComponent} from './shopping-list-new-item.component';
 import {ShoppingListItemComponent} from './shopping-list-item.component';
 import {ListItem} from '../list-item';
+import {FilterPipe} from '../filter.pipe';
 import {ShoppingListService} from './shopping-list.service';
 
 @Component({
@@ -12,9 +13,12 @@ import {ShoppingListService} from './shopping-list.service';
 		</section>
 		<section *ngIf="listItems != null && listItems.length > 0">
 			<h3>My List (click to edit)</h3>
+			Filter:
+			<input type="text" #filter (keyup)="0" />
 			<div class="list">
+			{{listItems.length}}
 				<ul class="list-group">
-					<li  class="list-group-item" *ngFor="#listItem of listItems" (click)="onSelect(listItem)">
+					<li  class="list-group-item" *ngFor="#listItem of listItems | myFilter:filter.value" (click)="onSelect(listItem)">
 						{{listItem.name}} ({{listItem.amount}})
 					</li>
 				</ul>
@@ -25,7 +29,8 @@ import {ShoppingListService} from './shopping-list.service';
 		</section>
 	`,
 	directives: [ShoppingListNewItemComponent, ShoppingListItemComponent],
-	providers: [ShoppingListService]
+	providers: [ShoppingListService],
+	pipes: [FilterPipe]
 })
 export class ShoppingListComponent implements OnInit{
 	listItems: Array<ListItem>;
