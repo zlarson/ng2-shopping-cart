@@ -1,0 +1,5 @@
+{
+  "proxy": "http://jhproxy1.phibred.com:8080",
+  "https-proxy": "http://jhproxy1.phibred.com:8080",
+  "strict-ssl": false
+}
