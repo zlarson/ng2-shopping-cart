@@ -5,6 +5,7 @@ import {ShoppingListService} from './shopping-list.service';
 @Component({
 	selector: 'shopping-list-item',
 	template: `
+		<h3>Edit Item</h3>
 		<div>
 			<label for="item-name">Name</label>
 			<input class="form-control" id="item-name" [(ngModel)]="item.name">
@@ -14,7 +15,7 @@ import {ShoppingListService} from './shopping-list.service';
 			<input class="form-control" id="item-amt" [(ngModel)]="item.amount">
 		</div>
 		<button class="btn btn-danger" (click)="onDelete()">Delete Item</button>
-	`
+	`,
 	inputs: ['item'],
  	outputs: ['removed']
 })

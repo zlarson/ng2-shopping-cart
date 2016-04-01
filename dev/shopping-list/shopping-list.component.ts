@@ -10,11 +10,11 @@ import {ShoppingListService} from './shopping-list.service';
 		<section>
 			<shopping-list-new-item ></shopping-list-new-item>
 		</section>
-		<section>
-			<h3>My List</h3>
+		<section *ngIf="listItems != null && listItems.length > 0">
+			<h3>My List (click to edit)</h3>
 			<div class="list">
-				<ul>
-					<li *ngFor="#listItem of listItems" (click)="onSelect(listItem)">
+				<ul class="list-group">
+					<li  class="list-group-item" *ngFor="#listItem of listItems" (click)="onSelect(listItem)">
 						{{listItem.name}} ({{listItem.amount}})
 					</li>
 				</ul>
